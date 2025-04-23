@@ -1,4 +1,4 @@
-using System.Windows.Forms;
+п»їusing System.Windows.Forms;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace kyrs
@@ -7,16 +7,16 @@ namespace kyrs
     {
         public Form1()
         {
-            InitializeComponent();//здесь я добавлял, если мне было лень идти в form1 designer
-            label2.Text = "Ведите количество экспертов и количество товаров";
-            button1.Text = "Создать таблицу"; // быв. Ввод
-            button2.Text = "Ввести случайные данные";
-            label3.Text = "Количество экспертов";
-            label4.Text = "Количество инструментов";
+            InitializeComponent();//Р·РґРµСЃСЊ СЏ РґРѕР±Р°РІР»СЏР», РµСЃР»Рё РјРЅРµ Р±С‹Р»Рѕ Р»РµРЅСЊ РёРґС‚Рё РІ form1 designer
+            label2.Text = "Р’РµРґРёС‚Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ СЌРєСЃРїРµСЂС‚РѕРІ Рё РєРѕР»РёС‡РµСЃС‚РІРѕ С‚РѕРІР°СЂРѕРІ";
+            button1.Text = "РЎРѕР·РґР°С‚СЊ С‚Р°Р±Р»РёС†Сѓ"; // Р±С‹РІ. Р’РІРѕРґ
+            button2.Text = "Р’РІРµСЃС‚Рё СЃР»СѓС‡Р°Р№РЅС‹Рµ РґР°РЅРЅС‹Рµ";
+            label3.Text = "РљРѕР»РёС‡РµСЃС‚РІРѕ СЌРєСЃРїРµСЂС‚РѕРІ";
+            label4.Text = "РљРѕР»РёС‡РµСЃС‚РІРѕ РёРЅСЃС‚СЂСѓРјРµРЅС‚РѕРІ";
             button3.Visible = false;
             button4.Visible = false;
-            label1.Text = "Ответ недоступен, для начала нажмите кнопку 'Создать таблицу'";
-            button5.Text = "Иморт exel файла (wip)";
+            label1.Text = "РћС‚РІРµС‚ РЅРµРґРѕСЃС‚СѓРїРµРЅ, РґР»СЏ РЅР°С‡Р°Р»Р° РЅР°Р¶РјРёС‚Рµ РєРЅРѕРїРєСѓ 'РЎРѕР·РґР°С‚СЊ С‚Р°Р±Р»РёС†Сѓ'";
+            button5.Text = "РРјРѕСЂС‚ exel С„Р°Р№Р»Р° (wip)";
 
         }
         private void button2_Click(object sender, EventArgs e)
@@ -26,17 +26,17 @@ namespace kyrs
             int y = rnd.Next(1, 101);
             textBox1.Text = x.ToString();
             textBox2.Text = y.ToString();
-            //здесь рандом для 2й кнопки
+            //Р·РґРµСЃСЊ СЂР°РЅРґРѕРј РґР»СЏ 2Р№ РєРЅРѕРїРєРё
         }
-        private void button1_Click(object sender, EventArgs e) // почему-то даже если вылазит ошибка с try то кнопки 3 и 4 всё-равно появляются
+        private void button1_Click(object sender, EventArgs e) // РїРѕС‡РµРјСѓ-С‚Рѕ РґР°Р¶Рµ РµСЃР»Рё РІС‹Р»Р°Р·РёС‚ РѕС€РёР±РєР° СЃ try С‚Рѕ РєРЅРѕРїРєРё 3 Рё 4 РІСЃС‘-СЂР°РІРЅРѕ РїРѕСЏРІР»СЏСЋС‚СЃСЏ
         {
             try
             {
-                button3.Text = "Вычислить данные";
+                button3.Text = "Р’С‹С‡РёСЃР»РёС‚СЊ РґР°РЅРЅС‹Рµ";
                 button3.Visible = true;
-                label1.Text = "Ответ недоступен, нажмите кнопку 'Вычислить данные'";
+                label1.Text = "РћС‚РІРµС‚ РЅРµРґРѕСЃС‚СѓРїРµРЅ, РЅР°Р¶РјРёС‚Рµ РєРЅРѕРїРєСѓ 'Р’С‹С‡РёСЃР»РёС‚СЊ РґР°РЅРЅС‹Рµ'";
                 button4.Visible = true;
-                button4.Text = "Зарандомить таблицу";
+                button4.Text = "Р—Р°СЂР°РЅРґРѕРјРёС‚СЊ С‚Р°Р±Р»РёС†Сѓ";
                 int experts = int.Parse(textBox1.Text);
                 int tovar = int.Parse(textBox2.Text);
                 dataGridView1.Columns.Clear();
@@ -44,41 +44,41 @@ namespace kyrs
                 dataGridView1.Columns.Add("", "/");
                 for (int i = 0; i < tovar; i++)
                 {
-                    dataGridView1.Columns.Add("", $"Товар {1 + i}"); // создание строки с товарами до i-1 столбца
+                    dataGridView1.Columns.Add("", $"РўРѕРІР°СЂ {1 + i}"); // СЃРѕР·РґР°РЅРёРµ СЃС‚СЂРѕРєРё СЃ С‚РѕРІР°СЂР°РјРё РґРѕ i-1 СЃС‚РѕР»Р±С†Р°
                 }
                 for (int i = 0; i < experts; i++)
                 {
                     dataGridView1.Rows.Add();
                     Random f = new Random();
-                    dataGridView1.Rows[i].Cells[0].Value = $"Эксперт {i + 1}";// создаю строчки с экспертами
+                    dataGridView1.Rows[i].Cells[0].Value = $"Р­РєСЃРїРµСЂС‚ {i + 1}";// СЃРѕР·РґР°СЋ СЃС‚СЂРѕС‡РєРё СЃ СЌРєСЃРїРµСЂС‚Р°РјРё
                     for (int j = 1; j < tovar + 1; j++)
                     {
-                        dataGridView1.Rows[i].Cells[j].Value = f.Next(0, 101);//а здесь уже заполняю строчки. Причем тк. 0 столбец у меня занят экспертами, приходится начинать заполнять с j=1 столбца
+                        dataGridView1.Rows[i].Cells[j].Value = f.Next(0, 101);//Р° Р·РґРµСЃСЊ СѓР¶Рµ Р·Р°РїРѕР»РЅСЏСЋ СЃС‚СЂРѕС‡РєРё. РџСЂРёС‡РµРј С‚Рє. 0 СЃС‚РѕР»Р±РµС† Сѓ РјРµРЅСЏ Р·Р°РЅСЏС‚ СЌРєСЃРїРµСЂС‚Р°РјРё, РїСЂРёС…РѕРґРёС‚СЃСЏ РЅР°С‡РёРЅР°С‚СЊ Р·Р°РїРѕР»РЅСЏС‚СЊ СЃ j=1 СЃС‚РѕР»Р±С†Р°
                     }
 
                 }
             }
-            catch// <31> через catch они появляются на секунду
+            catch// <31> С‡РµСЂРµР· catch РѕРЅРё РїРѕСЏРІР»СЏСЋС‚СЃСЏ РЅР° СЃРµРєСѓРЅРґСѓ
             {
-                label1.Text = @$"Ошибка button1_Click
-попробуйте больше не пользоваться компьютером";
+                label1.Text = @$"РћС€РёР±РєР° button1_Click
+РїРѕРїСЂРѕР±СѓР№С‚Рµ Р±РѕР»СЊС€Рµ РЅРµ РїРѕР»СЊР·РѕРІР°С‚СЊСЃСЏ РєРѕРјРїСЊСЋС‚РµСЂРѕРј";
                 button3.Visible = false;
                 button4.Visible = false;
             }
         }
-        private void button3_Click(object sender, EventArgs e) // если нажать кнопку 2, потом 3 без кнопки 1, то будет ошибка на 78 строке, мне лень исправлять
+        private void button3_Click(object sender, EventArgs e) // РµСЃР»Рё РЅР°Р¶Р°С‚СЊ РєРЅРѕРїРєСѓ 2, РїРѕС‚РѕРј 3 Р±РµР· РєРЅРѕРїРєРё 1, С‚Рѕ Р±СѓРґРµС‚ РѕС€РёР±РєР° РЅР° 78 СЃС‚СЂРѕРєРµ, РјРЅРµ Р»РµРЅСЊ РёСЃРїСЂР°РІР»СЏС‚СЊ
         {
             try
             {
                 double y = 0;
                 int experts = int.Parse(textBox1.Text);
                 int tovar = int.Parse(textBox2.Text);
-                List<double> ans1 = new List<double>();// альтернатива векторам из плюсов
-                for (int i = 1; i < tovar+1 ; i++)// от 1 до tovara тк 0 столбец - текст)))
+                List<double> ans1 = new List<double>();// Р°Р»СЊС‚РµСЂРЅР°С‚РёРІР° РІРµРєС‚РѕСЂР°Рј РёР· РїР»СЋСЃРѕРІ
+                for (int i = 1; i < tovar+1 ; i++)// РѕС‚ 1 РґРѕ tovara С‚Рє 0 СЃС‚РѕР»Р±РµС† - С‚РµРєСЃС‚)))
                 {
                     for (int j = 0; j < experts; j++)
                     {
-                        y += double.Parse(dataGridView1.Rows[j].Cells[i].Value.ToString());//суммиру по столбцам
+                        y += double.Parse(dataGridView1.Rows[j].Cells[i].Value.ToString());//СЃСѓРјРјРёСЂСѓ РїРѕ СЃС‚РѕР»Р±С†Р°Рј
                     }
                     ans1.Add(y);
                     y = 0;
@@ -87,7 +87,7 @@ namespace kyrs
                 double max = ans1[0];
                 int maxi = 0;
                 int mini = 0;
-                for (int i = 1; i < ans1.Count; i++)// ищу одновременно лучший и худший товар
+                for (int i = 1; i < ans1.Count; i++)// РёС‰Сѓ РѕРґРЅРѕРІСЂРµРјРµРЅРЅРѕ Р»СѓС‡С€РёР№ Рё С…СѓРґС€РёР№ С‚РѕРІР°СЂ
                 {
                     if (ans1[i] < min)
                     {
@@ -101,12 +101,12 @@ namespace kyrs
                     }
                 }
                 label1.Text = @$"1)
-Наихудший товар {mini + 1} с суммарной оценкой {min} 
-Наилучший товар {maxi + 1} с суммарной оценкой {max} 
+РќР°РёС…СѓРґС€РёР№ С‚РѕРІР°СЂ {mini + 1} СЃ СЃСѓРјРјР°СЂРЅРѕР№ РѕС†РµРЅРєРѕР№ {min} 
+РќР°РёР»СѓС‡С€РёР№ С‚РѕРІР°СЂ {maxi + 1} СЃ СЃСѓРјРјР°СЂРЅРѕР№ РѕС†РµРЅРєРѕР№ {max} 
 ";
                 double maxex = double.Parse(dataGridView1.Rows[0].Cells[maxi + 1].Value.ToString());
                 double maxexi = 1;
-                for (int j = 1; j < experts + 1; j++) // поставил j с 1 чтоб было лучше нумеровать экспертов на выводе, в итоге промучался долго с границами (((
+                for (int j = 1; j < experts + 1; j++) // РїРѕСЃС‚Р°РІРёР» j СЃ 1 С‡С‚РѕР± Р±С‹Р»Рѕ Р»СѓС‡С€Рµ РЅСѓРјРµСЂРѕРІР°С‚СЊ СЌРєСЃРїРµСЂС‚РѕРІ РЅР° РІС‹РІРѕРґРµ, РІ РёС‚РѕРіРµ РїСЂРѕРјСѓС‡Р°Р»СЃСЏ РґРѕР»РіРѕ СЃ РіСЂР°РЅРёС†Р°РјРё (((
                 {
                     if (maxex < double.Parse(dataGridView1.Rows[j - 1].Cells[maxi + 1].Value.ToString()))
                     {
@@ -115,16 +115,16 @@ namespace kyrs
                     }
                 }
                 label1.Text += @$"2)
-Наивысший балл {maxex} поставил эксперт {maxexi} товару {maxi + 1}
+РќР°РёРІС‹СЃС€РёР№ Р±Р°Р»Р» {maxex} РїРѕСЃС‚Р°РІРёР» СЌРєСЃРїРµСЂС‚ {maxexi} С‚РѕРІР°СЂСѓ {maxi + 1}
 3)
 ";
                 double x = 0;
                 double[] anss = new double[ans1.Count];
-                for (int i = 0; i < ans1.Count; i++)//заполняю массив с номерами товаров 
+                for (int i = 0; i < ans1.Count; i++)//Р·Р°РїРѕР»РЅСЏСЋ РјР°СЃСЃРёРІ СЃ РЅРѕРјРµСЂР°РјРё С‚РѕРІР°СЂРѕРІ 
                 {
                     anss[i] = i + 1;
                 }
-                for (int i = 0; i < ans1.Count - 1; i++)//пузырьковая сортировка, только её умею делать
+                for (int i = 0; i < ans1.Count - 1; i++)//РїСѓР·С‹СЂСЊРєРѕРІР°СЏ СЃРѕСЂС‚РёСЂРѕРІРєР°, С‚РѕР»СЊРєРѕ РµС‘ СѓРјРµСЋ РґРµР»Р°С‚СЊ
                 {
                     for (int j = 0; j < ans1.Count - 1 - i; j++)
                     {
@@ -136,22 +136,22 @@ namespace kyrs
                             x = anss[j];
                             anss[j] = anss[j + 1];
                             anss[j+1] = x;
-                        }//причем сортирую сразу оценку и номер товара
+                        }//РїСЂРёС‡РµРј СЃРѕСЂС‚РёСЂСѓСЋ СЃСЂР°Р·Сѓ РѕС†РµРЅРєСѓ Рё РЅРѕРјРµСЂ С‚РѕРІР°СЂР°
                     }
                 }
                 for (int i = 0 ; i < ans1.Count; i++)
                 {
-                    label1.Text += $@"Товар {anss[i]}, Общая оценка {ans1[i]}
-";// эта штука мне делает перенос по строка
+                    label1.Text += $@"РўРѕРІР°СЂ {anss[i]}, РћР±С‰Р°СЏ РѕС†РµРЅРєР° {ans1[i]}
+";// СЌС‚Р° С€С‚СѓРєР° РјРЅРµ РґРµР»Р°РµС‚ РїРµСЂРµРЅРѕСЃ РїРѕ СЃС‚СЂРѕРєР°
                 }
             }
             catch
             {
-                label1.Text = @$"Ошибка button3_Click
-Попробуйте заполнить все другими данными или нажать 'Создать таблицу'";
+                label1.Text = @$"РћС€РёР±РєР° button3_Click
+РџРѕРїСЂРѕР±СѓР№С‚Рµ Р·Р°РїРѕР»РЅРёС‚СЊ РІСЃРµ РґСЂСѓРіРёРјРё РґР°РЅРЅС‹РјРё РёР»Рё РЅР°Р¶Р°С‚СЊ 'РЎРѕР·РґР°С‚СЊ С‚Р°Р±Р»РёС†Сѓ'";
             }
         }
-        private void button4_Click(object sender, EventArgs e)//зарандомить таблицу, тупо паста из кнопки 2
+        private void button4_Click(object sender, EventArgs e)//Р·Р°СЂР°РЅРґРѕРјРёС‚СЊ С‚Р°Р±Р»РёС†Сѓ, С‚СѓРїРѕ РїР°СЃС‚Р° РёР· РєРЅРѕРїРєРё 2
         {
             int experts = int.Parse(textBox1.Text);
             int tovar = int.Parse(textBox2.Text);
