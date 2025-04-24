@@ -172,7 +172,7 @@ namespace kyrs
             button5.Click += button5_Click;
             // 
             // label5
-            // 
+            // ыыы
             label5.AutoSize = true;
             label5.BorderStyle = BorderStyle.FixedSingle;
             label5.Location = new Point(466, 49);
