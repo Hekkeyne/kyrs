@@ -41,6 +41,7 @@ namespace kyrs
             button4 = new Button();
             openFileDialog1 = new OpenFileDialog();
             button5 = new Button();
+            label5 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -59,14 +60,14 @@ namespace kyrs
             // 
             textBox1.Location = new Point(218, 44);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(90, 25);
+            textBox1.Size = new Size(90, 23);
             textBox1.TabIndex = 1;
             // 
             // textBox2
             // 
             textBox2.Location = new Point(218, 68);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(90, 25);
+            textBox2.Size = new Size(90, 23);
             textBox2.TabIndex = 3;
             // 
             // label2
@@ -75,16 +76,16 @@ namespace kyrs
             label2.BorderStyle = BorderStyle.FixedSingle;
             label2.Location = new Point(22, 25);
             label2.Name = "label2";
-            label2.Size = new Size(75, 25);
+            label2.Size = new Size(40, 17);
             label2.TabIndex = 4;
             label2.Text = "label2";
             // 
             // button2
             // 
+            button2.AutoSize = true;
             button2.Location = new Point(431, 68);
             button2.Name = "button2";
             button2.Size = new Size(75, 25);
-            button2.AutoSize = true;
             button2.TabIndex = 5;
             button2.Text = "button2";
             button2.UseVisualStyleBackColor = true;
@@ -96,7 +97,7 @@ namespace kyrs
             label3.BorderStyle = BorderStyle.FixedSingle;
             label3.Location = new Point(22, 48);
             label3.Name = "label3";
-            label3.Size = new Size(75, 25);
+            label3.Size = new Size(40, 17);
             label3.TabIndex = 6;
             label3.Text = "label3";
             // 
@@ -106,7 +107,7 @@ namespace kyrs
             label4.BorderStyle = BorderStyle.FixedSingle;
             label4.Location = new Point(22, 74);
             label4.Name = "label4";
-            label4.Size = new Size(75, 25);
+            label4.Size = new Size(40, 17);
             label4.TabIndex = 7;
             label4.Text = "label4";
             // 
@@ -120,10 +121,10 @@ namespace kyrs
             // 
             // button3
             // 
+            button3.AutoSize = true;
             button3.Location = new Point(629, 68);
             button3.Name = "button3";
             button3.Size = new Size(75, 25);
-            button3.AutoSize = true;
             button3.TabIndex = 9;
             button3.Text = "button3";
             button3.UseVisualStyleBackColor = true;
@@ -146,7 +147,6 @@ namespace kyrs
             button4.Location = new Point(774, 68);
             button4.Name = "button4";
             button4.Size = new Size(75, 25);
-            button4.AutoSize = true;
             button4.TabIndex = 12;
             button4.Text = "button4";
             button4.UseVisualStyleBackColor = true;
@@ -171,6 +171,16 @@ namespace kyrs
             button5.UseVisualStyleBackColor = true;
             button5.Click += button5_Click;
             // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.BorderStyle = BorderStyle.FixedSingle;
+            label5.Location = new Point(466, 49);
+            label5.Name = "label5";
+            label5.Size = new Size(40, 17);
+            label5.TabIndex = 14;
+            label5.Text = "label5";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -178,6 +188,7 @@ namespace kyrs
             AutoScroll = true;
             AutoSize = true;
             ClientSize = new Size(1848, 814);
+            Controls.Add(label5);
             Controls.Add(button5);
             Controls.Add(button4);
             Controls.Add(label1);
@@ -211,5 +222,6 @@ namespace kyrs
         private Button button4;
         private OpenFileDialog openFileDialog1;
         private Button button5;
+        private Label label5;
     }
 }

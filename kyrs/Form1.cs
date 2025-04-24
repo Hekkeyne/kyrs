@@ -17,6 +17,8 @@ namespace kyrs
             button4.Visible = false;
             label1.Text = "Ответ недоступен, для начала нажмите кнопку 'Создать таблицу'";
             button5.Text = "Иморт exel файла (wip)";
+            dataGridView1.Visible = false;
+            label5.Text = "Ошибки отсутствуют";
 
         }
         private void button2_Click(object sender, EventArgs e)
@@ -28,10 +30,12 @@ namespace kyrs
             textBox2.Text = y.ToString();
             //здесь рандом для 2й кнопки
         }
+
         private void button1_Click(object sender, EventArgs e) // почему-то даже если вылазит ошибка с try то кнопки 3 и 4 всё-равно появляются
         {
             try
             {
+                dataGridView1.Visible= true;
                 button3.Text = "Вычислить данные";
                 button3.Visible = true;
                 label1.Text = "Ответ недоступен, нажмите кнопку 'Вычислить данные'";
@@ -55,15 +59,27 @@ namespace kyrs
                     {
                         dataGridView1.Rows[i].Cells[j].Value = f.Next(0, 101);//а здесь уже заполняю строчки. Причем тк. 0 столбец у меня занят экспертами, приходится начинать заполнять с j=1 столбца
                     }
+                    label5.Text = "Ошибки отсутствуют";
 
                 }
             }
-            catch// <31> через catch они появляются на секунду
+            catch
             {
-                label1.Text = @$"Ошибка button1_Click
-попробуйте больше не пользоваться компьютером";
+                if (!int.TryParse(textBox1.Text, out _))
+                {
+                    label5.Text = $@"Ошибка textBox1. Введите допустимое значение экспертов";
+                }
+                else if (!int.TryParse(textBox2.Text, out _))
+                {
+                    label5.Text = @$"Ошибка textBox2. Введите допустимое значение инструментов";
+                }
+                else { label5.Text = "Неизвестная ошибка"; }
                 button3.Visible = false;
                 button4.Visible = false;
+                dataGridView1.Rows.Clear ();
+                dataGridView1.Columns.Clear ();
+                dataGridView1.Visible = false;
+
             }
         }
         private void button3_Click(object sender, EventArgs e) // если нажать кнопку 2, потом 3 без кнопки 1, то будет ошибка на 78 строке, мне лень исправлять
@@ -78,7 +94,7 @@ namespace kyrs
                 {
                     for (int j = 0; j < experts; j++)
                     {
-                        y += double.Parse(dataGridView1.Rows[j].Cells[i].Value.ToString());//суммиру по столбцам
+                            y += double.Parse(dataGridView1.Rows[j].Cells[i].Value.ToString());//суммиру по столбцам
                     }
                     ans1.Add(y);
                     y = 0;
@@ -147,8 +163,7 @@ namespace kyrs
             }
             catch
             {
-                label1.Text = @$"Ошибка button3_Click
-Попробуйте заполнить все другими данными или нажать 'Создать таблицу'";
+                label5.Text = @$"Ошибка button3_Click. Попробуйте заполнить все другими данными или нажать 'Создать таблицу'";
             }
         }
         private void button4_Click(object sender, EventArgs e)//зарандомить таблицу, тупо паста из кнопки 2
@@ -172,7 +187,7 @@ namespace kyrs
         {
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-
+                //эксель, нужно чета скачать
             }
         }
         
