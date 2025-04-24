@@ -188,6 +188,7 @@ namespace kyrs
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 //эксель, нужно чета скачать
+                //ыыыы
             }
         }
         
