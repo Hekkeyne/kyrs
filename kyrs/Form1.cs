@@ -16,7 +16,6 @@ namespace kyrs
             button3.Visible = false;
             button4.Visible = false;
             label1.Text = "Ответ недоступен, для начала нажмите кнопку 'Создать таблицу'";
-            button5.Text = "Иморт exel файла (wip)";
             dataGridView1.Visible = false;
             label5.Text = "Ошибки отсутствуют";
 
@@ -35,7 +34,7 @@ namespace kyrs
         {
             try
             {
-                dataGridView1.Visible= true;
+                dataGridView1.Visible = true;
                 button3.Text = "Вычислить данные";
                 button3.Visible = true;
                 label1.Text = "Ответ недоступен, нажмите кнопку 'Вычислить данные'";
@@ -65,23 +64,23 @@ namespace kyrs
             }
             catch
             {
-                if (!int.TryParse(textBox1.Text, out _)&& !int.TryParse(textBox2.Text, out _))
+                if (!int.TryParse(textBox1.Text, out _) && !int.TryParse(textBox2.Text, out _))
                 {
-                    label5.Text = "Ошибка textBox1 и textBox2. Введите допустимое значения экспертов и инструментов";
+                    label5.Text = "Ошибка поля 'Эксперты' и поля 'Инструменты'. Введите допустимое значения экспертов и инструментов";
                 }
                 else if (!int.TryParse(textBox1.Text, out _))
                 {
-                    label5.Text = $@"Ошибка textBox1. Введите допустимое значение экспертов";
+                    label5.Text = $@"Ошибка поля 'Эксперты'. Введите допустимое значение экспертов";
                 }
                 else if (!int.TryParse(textBox2.Text, out _))
                 {
-                    label5.Text = @$"Ошибка textBox2. Введите допустимое значение инструментов";
+                    label5.Text = @$"Ошибка поля 'Инструменты'. Введите допустимое значение инструментов";
                 }
                 else { label5.Text = "Неизвестная ошибка"; }
                 button3.Visible = false;
                 button4.Visible = false;
-                dataGridView1.Rows.Clear ();
-                dataGridView1.Columns.Clear ();
+                dataGridView1.Rows.Clear();
+                dataGridView1.Columns.Clear();
                 dataGridView1.Visible = false;
 
             }
@@ -94,11 +93,11 @@ namespace kyrs
                 int experts = int.Parse(textBox1.Text);
                 int tovar = int.Parse(textBox2.Text);
                 List<double> ans1 = new List<double>();// альтернатива векторам из плюсов
-                for (int i = 1; i < tovar+1 ; i++)// от 1 до tovara тк 0 столбец - текст)))
+                for (int i = 1; i < tovar + 1; i++)// от 1 до tovara тк 0 столбец - текст)))
                 {
                     for (int j = 0; j < experts; j++)
                     {
-                            y += double.Parse(dataGridView1.Rows[j].Cells[i].Value.ToString());//суммиру по столбцам
+                        y += double.Parse(dataGridView1.Rows[j].Cells[i].Value.ToString());//суммиру по столбцам
                     }
                     ans1.Add(y);
                     y = 0;
@@ -155,11 +154,11 @@ namespace kyrs
                             ans1[j + 1] = x;
                             x = anss[j];
                             anss[j] = anss[j + 1];
-                            anss[j+1] = x;
+                            anss[j + 1] = x;
                         }//причем сортирую сразу оценку и номер товара
                     }
                 }
-                for (int i = 0 ; i < ans1.Count; i++)
+                for (int i = 0; i < ans1.Count; i++)
                 {
                     label1.Text += $@"Товар {anss[i]}, Общая оценка {ans1[i]}
 ";// эта штука мне делает перенос по строка
@@ -167,7 +166,7 @@ namespace kyrs
             }
             catch
             {
-                label5.Text = @$"Ошибка button3_Click. Попробуйте заполнить все другими данными или нажать 'Создать таблицу'";
+                label5.Text = @$"Ошибка 'Вычислить данные'. Попробуйте заполнить все другими данными или нажать 'Создать таблицу'";
             }
         }
         private void button4_Click(object sender, EventArgs e)//зарандомить таблицу, тупо паста из кнопки 2
@@ -187,13 +186,44 @@ namespace kyrs
             }
 
         }
-        private void button5_Click(object sender, EventArgs e)
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void импортToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                //эксель, нужно чета скачать
+                using (StreamReader h = new StreamReader(openFileDialog1.FileName)) 
+                {
+                    int stolb=0;
+                    int strok = 0;
+                    string z;
+                    string[] tabl;
+                    while ((z = h.ReadLine()) != null)
+                    {
+                        string[] g = z.Split(new[] {' ','\t'}, StringSplitOptions.RemoveEmptyEntries);
+                        tabl = z.Split(new[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
+                        strok++;
+                        stolb = g.Length;
+                    }
+                    for (int i = 0; i < strok; i++)
+                    {
+                        for (int j = 0;j< stolb; j++)
+                        {
+                            for (int k = 0; k < strok; k++)
+                            {
+
+
+                               // dataGridView1.Rows[i].Cells[j] = 0;
+                            }
+                        }
+                    }
+                    label5.Text = $"{stolb} {strok}";
+                    
+                }
             }
         }
-        
     }
 }

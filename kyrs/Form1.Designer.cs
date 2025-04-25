@@ -40,9 +40,13 @@ namespace kyrs
             label1 = new Label();
             button4 = new Button();
             openFileDialog1 = new OpenFileDialog();
-            button5 = new Button();
             label5 = new Label();
+            menuStrip1 = new MenuStrip();
+            импортДанныхToolStripMenuItem = new ToolStripMenuItem();
+            испортToolStripMenuItem = new ToolStripMenuItem();
+            экспортtxtToolStripMenuItem = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // button1
@@ -160,17 +164,6 @@ namespace kyrs
             openFileDialog1.InitialDirectory = "c:\\";
             openFileDialog1.RestoreDirectory = true;
             // 
-            // button5
-            // 
-            button5.AutoSize = true;
-            button5.Location = new Point(312, 44);
-            button5.Name = "button5";
-            button5.Size = new Size(75, 25);
-            button5.TabIndex = 13;
-            button5.Text = "button5";
-            button5.UseVisualStyleBackColor = true;
-            button5.Click += button5_Click;
-            // 
             // label5
             // 
             label5.AutoSize = true;
@@ -181,6 +174,35 @@ namespace kyrs
             label5.TabIndex = 14;
             label5.Text = "label5";
             // 
+            // menuStrip1
+            // 
+            menuStrip1.Items.AddRange(new ToolStripItem[] { импортДанныхToolStripMenuItem });
+            menuStrip1.Location = new Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new Size(1848, 24);
+            menuStrip1.TabIndex = 15;
+            menuStrip1.Text = "menuStrip1";
+            // 
+            // импортДанныхToolStripMenuItem
+            // 
+            импортДанныхToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { испортToolStripMenuItem, экспортtxtToolStripMenuItem });
+            импортДанныхToolStripMenuItem.Name = "импортДанныхToolStripMenuItem";
+            импортДанныхToolStripMenuItem.Size = new Size(120, 20);
+            импортДанныхToolStripMenuItem.Text = "Работа с данными";
+            // 
+            // испортToolStripMenuItem
+            // 
+            испортToolStripMenuItem.Name = "испортToolStripMenuItem";
+            испортToolStripMenuItem.Size = new Size(180, 22);
+            испортToolStripMenuItem.Text = "Импорт";
+            испортToolStripMenuItem.Click += импортToolStripMenuItem_Click;
+            // 
+            // экспортtxtToolStripMenuItem
+            // 
+            экспортtxtToolStripMenuItem.Name = "экспортtxtToolStripMenuItem";
+            экспортtxtToolStripMenuItem.Size = new Size(180, 22);
+            экспортtxtToolStripMenuItem.Text = "Экспорт (.txt)";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -189,7 +211,6 @@ namespace kyrs
             AutoSize = true;
             ClientSize = new Size(1848, 814);
             Controls.Add(label5);
-            Controls.Add(button5);
             Controls.Add(button4);
             Controls.Add(label1);
             Controls.Add(button3);
@@ -201,10 +222,14 @@ namespace kyrs
             Controls.Add(textBox2);
             Controls.Add(textBox1);
             Controls.Add(button1);
+            Controls.Add(menuStrip1);
+            MainMenuStrip = menuStrip1;
             Name = "Form1";
-            Text = "Курсовая Работа";
+            Text = "d";
             WindowState = FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -221,7 +246,10 @@ namespace kyrs
         private Label label1;
         private Button button4;
         private OpenFileDialog openFileDialog1;
-        private Button button5;
         private Label label5;
+        private MenuStrip menuStrip1;
+        private ToolStripMenuItem импортДанныхToolStripMenuItem;
+        private ToolStripMenuItem испортToolStripMenuItem;
+        private ToolStripMenuItem экспортtxtToolStripMenuItem;
     }
 }
