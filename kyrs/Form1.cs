@@ -65,7 +65,11 @@ namespace kyrs
             }
             catch
             {
-                if (!int.TryParse(textBox1.Text, out _))
+                if (!int.TryParse(textBox1.Text, out _)&& !int.TryParse(textBox2.Text, out _))
+                {
+                    label5.Text = "Ошибка textBox1 и textBox2. Введите допустимое значения экспертов и инструментов";
+                }
+                else if (!int.TryParse(textBox1.Text, out _))
                 {
                     label5.Text = $@"Ошибка textBox1. Введите допустимое значение экспертов";
                 }
@@ -188,7 +192,6 @@ namespace kyrs
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 //эксель, нужно чета скачать
-                //ыыыы
             }
         }
         

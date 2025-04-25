@@ -172,7 +172,7 @@ namespace kyrs
             button5.Click += button5_Click;
             // 
             // label5
-            // ыыы
+            // 
             label5.AutoSize = true;
             label5.BorderStyle = BorderStyle.FixedSingle;
             label5.Location = new Point(466, 49);
@@ -202,7 +202,7 @@ namespace kyrs
             Controls.Add(textBox1);
             Controls.Add(button1);
             Name = "Form1";
-            Text = "Form1";
+            Text = "Курсовая Работа";
             WindowState = FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
