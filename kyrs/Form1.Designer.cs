@@ -193,14 +193,14 @@ namespace kyrs
             // испортToolStripMenuItem
             // 
             испортToolStripMenuItem.Name = "испортToolStripMenuItem";
-            испортToolStripMenuItem.Size = new Size(180, 22);
+            испортToolStripMenuItem.Size = new Size(146, 22);
             испортToolStripMenuItem.Text = "Импорт";
             испортToolStripMenuItem.Click += импортToolStripMenuItem_Click;
             // 
             // экспортtxtToolStripMenuItem
             // 
             экспортtxtToolStripMenuItem.Name = "экспортtxtToolStripMenuItem";
-            экспортtxtToolStripMenuItem.Size = new Size(180, 22);
+            экспортtxtToolStripMenuItem.Size = new Size(146, 22);
             экспортtxtToolStripMenuItem.Text = "Экспорт (.txt)";
             // 
             // Form1

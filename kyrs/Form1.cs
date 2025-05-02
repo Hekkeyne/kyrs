@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System.Linq.Expressions;
+using System.Windows.Forms;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace kyrs
@@ -44,16 +45,15 @@ namespace kyrs
                 int tovar = int.Parse(textBox2.Text);
                 dataGridView1.Columns.Clear();
                 dataGridView1.Rows.Clear();
-                dataGridView1.Columns.Add("", "/");
+                dataGridView1.Columns.Add("/", "");
                 for (int i = 0; i < tovar; i++)
                 {
                     dataGridView1.Columns.Add("", $"Товар {1 + i}"); // создание строки с товарами до i-1 столбца
                 }
                 for (int i = 0; i < experts; i++)
                 {
-                    dataGridView1.Rows.Add();
+                    dataGridView1.Rows.Add($"Эксперт {i + 1}", "");
                     Random f = new Random();
-                    dataGridView1.Rows[i].Cells[0].Value = $"Эксперт {i + 1}";// создаю строчки с экспертами
                     for (int j = 1; j < tovar + 1; j++)
                     {
                         dataGridView1.Rows[i].Cells[j].Value = f.Next(0, 101);//а здесь уже заполняю строчки. Причем тк. 0 столбец у меня занят экспертами, приходится начинать заполнять с j=1 столбца
@@ -192,38 +192,64 @@ namespace kyrs
         }
 
         private void импортToolStripMenuItem_Click(object sender, EventArgs e)
+
         {
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            try
             {
-                using (StreamReader h = new StreamReader(openFileDialog1.FileName)) 
+                dataGridView1.Columns.Clear();
+                dataGridView1.Rows.Clear();
+                dataGridView1.Visible = true;
+                if (openFileDialog1.ShowDialog() == DialogResult.OK)
                 {
-                    int stolb=0;
-                    int strok = 0;
-                    string z;
-                    string[] tabl;
-                    while ((z = h.ReadLine()) != null)
+                    using (StreamReader h = new StreamReader(openFileDialog1.FileName))
+
                     {
-                        string[] g = z.Split(new[] {' ','\t'}, StringSplitOptions.RemoveEmptyEntries);
-                        tabl = z.Split(new[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
-                        strok++;
-                        stolb = g.Length;
-                    }
-                    for (int i = 0; i < strok; i++)
-                    {
-                        for (int j = 0;j< stolb; j++)
+                        dataGridView1.Visible = true;
+                        button3.Text = "Вычислить данные";
+                        button3.Visible = true;
+                        label1.Text = "Ответ недоступен, нажмите кнопку 'Вычислить данные'";
+                        button4.Visible = true;
+                        button4.Text = "Зарандомить таблицу";
+                        List<string[]> fff = new List<string[]>();
+                        dataGridView1.Columns.Clear();
+                        dataGridView1.Rows.Clear();
+                        int stolb = 0;
+                        int strok = 0;
+                        string z;
+                        while ((z = h.ReadLine()) != null)
                         {
-                            for (int k = 0; k < strok; k++)
+                            string[] g = z.Split(new[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
+                            fff.Add(g);
+                            strok++;
+                            stolb = g.Length;
+                        }
+                        dataGridView1.Columns.Add("", "/");
+                        for (int i = 0; i < stolb; i++)
+                        {
+                            dataGridView1.Columns.Add("", $"Товар {1 + i}");
+                        }
+                        for (int i = 0; i < strok; i++)
+                        {
+                            dataGridView1.Rows.Add($"Эксперт {i + 1}");
+                            for (int j = 0; j < fff[i].Length; j++)
                             {
-
-
-                               // dataGridView1.Rows[i].Cells[j] = 0;
+                                dataGridView1.Rows[i].Cells[j + 1].Value = fff[i][j];
                             }
                         }
+                        textBox1.Text = stolb.ToString();
+                        textBox2.Text = strok.ToString();
                     }
-                    label5.Text = $"{stolb} {strok}";
-                    
                 }
             }
+            catch
+            {
+                MessageBox.Show("Ошибка открытия файла");
+            }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
