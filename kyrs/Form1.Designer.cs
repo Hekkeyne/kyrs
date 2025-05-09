@@ -189,18 +189,19 @@ namespace kyrs
             импортДанныхToolStripMenuItem.Name = "импортДанныхToolStripMenuItem";
             импортДанныхToolStripMenuItem.Size = new Size(120, 20);
             импортДанныхToolStripMenuItem.Text = "Работа с данными";
+            импортДанныхToolStripMenuItem.Click += импортДанныхToolStripMenuItem_Click;
             // 
             // испортToolStripMenuItem
             // 
             испортToolStripMenuItem.Name = "испортToolStripMenuItem";
-            испортToolStripMenuItem.Size = new Size(146, 22);
+            испортToolStripMenuItem.Size = new Size(180, 22);
             испортToolStripMenuItem.Text = "Импорт";
             испортToolStripMenuItem.Click += импортToolStripMenuItem_Click;
             // 
             // экспортtxtToolStripMenuItem
             // 
             экспортtxtToolStripMenuItem.Name = "экспортtxtToolStripMenuItem";
-            экспортtxtToolStripMenuItem.Size = new Size(146, 22);
+            экспортtxtToolStripMenuItem.Size = new Size(180, 22);
             экспортtxtToolStripMenuItem.Text = "Экспорт (.txt)";
             // 
             // Form1
