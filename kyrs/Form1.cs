@@ -24,6 +24,8 @@ namespace kyrs
         }
         private void button2_Click(object sender, EventArgs e)
         {
+            textBox1.BackColor = Color.White;
+            textBox2.BackColor = Color.White;
             Random rnd = new Random();
             int x = rnd.Next(1, 101);
             textBox1.Text = x.ToString();
@@ -35,6 +37,8 @@ namespace kyrs
         {
             try
             {
+                textBox1.BackColor = Color.White;
+                textBox2.BackColor = Color.White;
                 dataGridView1.Visible = true;
                 button3.Text = "Вычислить данные";
                 button3.Visible = true;
@@ -57,6 +61,10 @@ namespace kyrs
                     for (int j = 1; j < tovar + 1; j++)
                     {
                         dataGridView1.Rows[i].Cells[j].Value = f.Next(0, 101);
+                        if (dataGridView1.Rows[i].Cells[j].Style.BackColor == Color.Red)
+                        {
+                            dataGridView1.Rows[i].Cells[j].Style.BackColor = Color.White;
+                        }
                     }
                     label5.Text = "Ошибки отсутствуют";
 
@@ -67,14 +75,18 @@ namespace kyrs
                 if (!int.TryParse(textBox1.Text, out _) && !int.TryParse(textBox2.Text, out _))
                 {
                     label5.Text = "Ошибка поля 'Эксперты' и поля 'Инструменты'. Введите допустимое значения экспертов и инструментов";
+                    textBox1.BackColor = Color.Red;
+                    textBox2.BackColor = Color.Red;
                 }
                 else if (!int.TryParse(textBox1.Text, out _))
                 {
                     label5.Text = $@"Ошибка поля 'Эксперты'. Введите допустимое значение экспертов";
+                    textBox1.BackColor = Color.Red;
                 }
                 else if (!int.TryParse(textBox2.Text, out _))
                 {
                     label5.Text = @$"Ошибка поля 'Инструменты'. Введите допустимое значение инструментов";
+                    textBox2.BackColor = Color.Red;
                 }
                 else { label5.Text = "Неизвестная ошибка"; }
                 button3.Visible = false;
@@ -100,6 +112,10 @@ namespace kyrs
                         try
                         {
                             y += int.Parse(dataGridView1.Rows[j].Cells[i].Value.ToString());
+                            if (dataGridView1.Rows[j].Cells[i].Style.BackColor == Color.Red)
+                            {
+                                dataGridView1.Rows[j].Cells[i].Style.BackColor = Color.White;
+                            }
                         }
                         catch
                         {
@@ -175,8 +191,6 @@ namespace kyrs
             }
             catch
             {
-                label5.Text = @$"Ошибка 'Вычислить данные'. Попробуйте заполнить все другими данными или нажать 'Создать таблицу'";
-                MessageBox.Show($"{textBox1.Text} {textBox2.Text} {dataGridView1.Rows[2].Cells[1].Value}");
             }
         }
         private void button4_Click(object sender, EventArgs e)
@@ -189,12 +203,12 @@ namespace kyrs
                 for (int j = 1; j < tovar + 1; j++)
                 {
                     dataGridView1.Rows[i].Cells[j].Value = f.Next(1, 101);
+                    if (dataGridView1.Rows[i].Cells[j].Style.BackColor == Color.Red)
+                    {
+                        dataGridView1.Rows[i].Cells[j].Style.BackColor = Color.White;
+                    }
                 }
             }
-
-        }
-        private void Form1_Load(object sender, EventArgs e)
-        {
 
         }
 
@@ -203,6 +217,8 @@ namespace kyrs
         {
             try
             {
+                textBox1.BackColor = Color.White;
+                textBox2.BackColor = Color.White;
                 dataGridView1.Columns.Clear();
                 dataGridView1.Rows.Clear();
                 dataGridView1.Visible = true;
@@ -238,6 +254,10 @@ namespace kyrs
                             for (int j = 0; j < (fff[i].Length); j++)
                             {
                                 dataGridView1.Rows[i].Cells[j+1].Value = fff[i][j];
+                                if (dataGridView1.Rows[i].Cells[j+1].Style.BackColor == Color.Red)
+                                {
+                                    dataGridView1.Rows[i].Cells[j+1].Style.BackColor = Color.White;
+                                }
                             }
                         }
                         textBox2.Text = stolb.ToString();
@@ -261,6 +281,8 @@ namespace kyrs
             try
             {
                 saveFileDialog1.Filter = "Text files|*.txt";
+                textBox1.BackColor = Color.White;
+                textBox2.BackColor = Color.White;
                 if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                 {
                     using (StreamWriter sw = new StreamWriter(saveFileDialog1.FileName))
