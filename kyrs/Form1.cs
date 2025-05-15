@@ -19,7 +19,6 @@ namespace kyrs
             button4.Visible = false;
             label1.Text = "Ответ недоступен, для начала нажмите кнопку 'Создать таблицу'";
             dataGridView1.Visible = false;
-            label5.Text = "Ошибки отсутствуют";
 
         }
         private void button2_Click(object sender, EventArgs e)
@@ -66,29 +65,24 @@ namespace kyrs
                             dataGridView1.Rows[i].Cells[j].Style.BackColor = Color.White;
                         }
                     }
-                    label5.Text = "Ошибки отсутствуют";
-
                 }
             }
             catch
             {
                 if (!int.TryParse(textBox1.Text, out _) && !int.TryParse(textBox2.Text, out _))
                 {
-                    label5.Text = "Ошибка поля 'Эксперты' и поля 'Инструменты'. Введите допустимое значения экспертов и инструментов";
                     textBox1.BackColor = Color.Red;
                     textBox2.BackColor = Color.Red;
                 }
                 else if (!int.TryParse(textBox1.Text, out _))
                 {
-                    label5.Text = $@"Ошибка поля 'Эксперты'. Введите допустимое значение экспертов";
                     textBox1.BackColor = Color.Red;
                 }
                 else if (!int.TryParse(textBox2.Text, out _))
                 {
-                    label5.Text = @$"Ошибка поля 'Инструменты'. Введите допустимое значение инструментов";
                     textBox2.BackColor = Color.Red;
                 }
-                else { label5.Text = "Неизвестная ошибка"; }
+
                 button3.Visible = false;
                 button4.Visible = false;
                 dataGridView1.Rows.Clear();

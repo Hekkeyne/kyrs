@@ -40,7 +40,6 @@ namespace kyrs
             label1 = new Label();
             button4 = new Button();
             openFileDialog1 = new OpenFileDialog();
-            label5 = new Label();
             menuStrip1 = new MenuStrip();
             импортДанныхToolStripMenuItem = new ToolStripMenuItem();
             испортToolStripMenuItem = new ToolStripMenuItem();
@@ -165,16 +164,6 @@ namespace kyrs
             openFileDialog1.InitialDirectory = "c:\\";
             openFileDialog1.RestoreDirectory = true;
             // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.BorderStyle = BorderStyle.FixedSingle;
-            label5.Location = new Point(466, 49);
-            label5.Name = "label5";
-            label5.Size = new Size(40, 17);
-            label5.TabIndex = 14;
-            label5.Text = "label5";
-            // 
             // menuStrip1
             // 
             menuStrip1.Items.AddRange(new ToolStripItem[] { импортДанныхToolStripMenuItem });
@@ -212,7 +201,6 @@ namespace kyrs
             AutoScroll = true;
             AutoSize = true;
             ClientSize = new Size(1848, 814);
-            Controls.Add(label5);
             Controls.Add(button4);
             Controls.Add(label1);
             Controls.Add(button3);
@@ -248,7 +236,6 @@ namespace kyrs
         private Label label1;
         private Button button4;
         private OpenFileDialog openFileDialog1;
-        private Label label5;
         private MenuStrip menuStrip1;
         private ToolStripMenuItem импортДанныхToolStripMenuItem;
         private ToolStripMenuItem испортToolStripMenuItem;
