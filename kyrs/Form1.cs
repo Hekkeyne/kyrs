@@ -97,7 +97,16 @@ namespace kyrs
                 {
                     for (int j = 0; j < experts; j++)
                     {
-                        y += int.Parse(dataGridView1.Rows[j].Cells[i].Value.ToString());
+                        try
+                        {
+                            y += int.Parse(dataGridView1.Rows[j].Cells[i].Value.ToString());
+                        }
+                        catch
+                        {
+                            dataGridView1.Rows[j].Cells[i].Style.BackColor = Color.Red;
+                            j += 1;
+
+                        }
                     }
                     ans1.Add(y);
                     y = 0;
