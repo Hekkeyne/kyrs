@@ -45,6 +45,7 @@ namespace kyrs
             импортДанныхToolStripMenuItem = new ToolStripMenuItem();
             испортToolStripMenuItem = new ToolStripMenuItem();
             экспортtxtToolStripMenuItem = new ToolStripMenuItem();
+            saveFileDialog1 = new SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             menuStrip1.SuspendLayout();
             SuspendLayout();
@@ -189,20 +190,20 @@ namespace kyrs
             импортДанныхToolStripMenuItem.Name = "импортДанныхToolStripMenuItem";
             импортДанныхToolStripMenuItem.Size = new Size(120, 20);
             импортДанныхToolStripMenuItem.Text = "Работа с данными";
-            импортДанныхToolStripMenuItem.Click += импортДанныхToolStripMenuItem_Click;
             // 
             // испортToolStripMenuItem
             // 
             испортToolStripMenuItem.Name = "испортToolStripMenuItem";
-            испортToolStripMenuItem.Size = new Size(180, 22);
+            испортToolStripMenuItem.Size = new Size(146, 22);
             испортToolStripMenuItem.Text = "Импорт";
             испортToolStripMenuItem.Click += импортToolStripMenuItem_Click;
             // 
             // экспортtxtToolStripMenuItem
             // 
             экспортtxtToolStripMenuItem.Name = "экспортtxtToolStripMenuItem";
-            экспортtxtToolStripMenuItem.Size = new Size(180, 22);
+            экспортtxtToolStripMenuItem.Size = new Size(146, 22);
             экспортtxtToolStripMenuItem.Text = "Экспорт (.txt)";
+            экспортtxtToolStripMenuItem.Click += экспортtxtToolStripMenuItem_Click;
             // 
             // Form1
             // 
@@ -252,5 +253,6 @@ namespace kyrs
         private ToolStripMenuItem импортДанныхToolStripMenuItem;
         private ToolStripMenuItem испортToolStripMenuItem;
         private ToolStripMenuItem экспортtxtToolStripMenuItem;
+        private SaveFileDialog saveFileDialog1;
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Linq.Expressions;
 using System.Windows.Forms;
+using System.Windows.Forms.Design;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace kyrs
@@ -88,7 +89,7 @@ namespace kyrs
         {
             try
             {
-                double y = 0;
+                int y = 0;
                 int experts = int.Parse(textBox1.Text);
                 int tovar = int.Parse(textBox2.Text);
                 List<double> ans1 = new List<double>();
@@ -96,7 +97,7 @@ namespace kyrs
                 {
                     for (int j = 0; j < experts; j++)
                     {
-                        y += double.Parse(dataGridView1.Rows[j].Cells[i].Value.ToString());
+                        y += int.Parse(dataGridView1.Rows[j].Cells[i].Value.ToString());
                     }
                     ans1.Add(y);
                     y = 0;
@@ -166,6 +167,7 @@ namespace kyrs
             catch
             {
                 label5.Text = @$"Ошибка 'Вычислить данные'. Попробуйте заполнить все другими данными или нажать 'Создать таблицу'";
+                MessageBox.Show($"{textBox1.Text} {textBox2.Text} {dataGridView1.Rows[2].Cells[1].Value}");
             }
         }
         private void button4_Click(object sender, EventArgs e)
@@ -201,8 +203,6 @@ namespace kyrs
 
                     {
                         List<string[]> fff = new List<string[]>();
-                        dataGridView1.Columns.Clear();
-                        dataGridView1.Rows.Clear();
                         int stolb = 0;
                         int strok = 0;
                         string z;
@@ -211,8 +211,13 @@ namespace kyrs
                             string[] g = z.Split(new[] { ' ', '\t', ',' }, StringSplitOptions.RemoveEmptyEntries);
                             fff.Add(g);
                             strok++;
-                            stolb = g.Length;
+                            if (g.Length > stolb)
+                            {
+                                stolb = g.Length;
+                            }
                         }
+                        dataGridView1.Columns.Clear();
+                        dataGridView1.Rows.Clear();
                         dataGridView1.Columns.Add("", "/");
                         for (int i = 0; i < stolb; i++)
                         {
@@ -220,14 +225,14 @@ namespace kyrs
                         }
                         for (int i = 0; i < strok; i++)
                         {
-                            dataGridView1.Rows.Add($"Эксперт {i + 1}");
-                            for (int j = 0; j < fff[i].Length; j++)
+                            dataGridView1.Rows.Add($"Эксперт {i + 1}","");
+                            for (int j = 0; j < (fff[i].Length); j++)
                             {
-                                dataGridView1.Rows[i].Cells[j + 1].Value = fff[i][j];
+                                dataGridView1.Rows[i].Cells[j+1].Value = fff[i][j];
                             }
                         }
-                        textBox1.Text = stolb.ToString();
-                        textBox2.Text = strok.ToString();
+                        textBox2.Text = stolb.ToString();
+                        textBox1.Text = strok.ToString();
                         dataGridView1.Visible = true;
                         button3.Text = "Вычислить данные";
                         button3.Visible = true;
@@ -242,10 +247,37 @@ namespace kyrs
                 MessageBox.Show("Ошибка открытия файла");
             }
         }
-
-        private void импортДанныхToolStripMenuItem_Click(object sender, EventArgs e)
+        private void экспортtxtToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                saveFileDialog1.Filter = "Text files|*.txt";
+                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    using (StreamWriter sw = new StreamWriter(saveFileDialog1.FileName))
+                    {
+                        string g = "";
+                        string fn = saveFileDialog1.FileName;
+                        int a = int.Parse(textBox1.Text);
+                        int b = int.Parse(textBox2.Text);
+                        for (int i = 0; i < a; i++)
+                        {
+                            for (int j = 1; j <= b; j++)
+                            {
+                                g = g+(dataGridView1.Rows[i].Cells[j].Value)+" ";
+                            }
+                            sw.WriteLine(g);
+                            g = "";
+                        }
+                        MessageBox.Show($"Файл сохранён в {fn}");
+                    }
+                }
+                
+            }
+            catch 
+            {
+                
+            }
         }
     }
 }
