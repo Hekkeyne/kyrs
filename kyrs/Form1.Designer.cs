@@ -44,7 +44,11 @@ namespace kyrs
             импортДанныхToolStripMenuItem = new ToolStripMenuItem();
             испортToolStripMenuItem = new ToolStripMenuItem();
             экспортtxtToolStripMenuItem = new ToolStripMenuItem();
+            создатьТаблицуToolStripMenuItem = new ToolStripMenuItem();
+            зарандомитьТаблицуToolStripMenuItem = new ToolStripMenuItem();
+            вычислитьДанныеToolStripMenuItem = new ToolStripMenuItem();
             saveFileDialog1 = new SaveFileDialog();
+            очиститьДанныеToolStripMenuItem = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             menuStrip1.SuspendLayout();
             SuspendLayout();
@@ -166,7 +170,7 @@ namespace kyrs
             // 
             // menuStrip1
             // 
-            menuStrip1.Items.AddRange(new ToolStripItem[] { импортДанныхToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { импортДанныхToolStripMenuItem, создатьТаблицуToolStripMenuItem, зарандомитьТаблицуToolStripMenuItem, вычислитьДанныеToolStripMenuItem, очиститьДанныеToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(1848, 24);
@@ -193,6 +197,34 @@ namespace kyrs
             экспортtxtToolStripMenuItem.Size = new Size(146, 22);
             экспортtxtToolStripMenuItem.Text = "Экспорт (.txt)";
             экспортtxtToolStripMenuItem.Click += экспортtxtToolStripMenuItem_Click;
+            // 
+            // создатьТаблицуToolStripMenuItem
+            // 
+            создатьТаблицуToolStripMenuItem.Name = "создатьТаблицуToolStripMenuItem";
+            создатьТаблицуToolStripMenuItem.Size = new Size(110, 20);
+            создатьТаблицуToolStripMenuItem.Text = "Создать таблицу";
+            создатьТаблицуToolStripMenuItem.Click += button1_Click;
+            // 
+            // зарандомитьТаблицуToolStripMenuItem
+            // 
+            зарандомитьТаблицуToolStripMenuItem.Name = "зарандомитьТаблицуToolStripMenuItem";
+            зарандомитьТаблицуToolStripMenuItem.Size = new Size(140, 20);
+            зарандомитьТаблицуToolStripMenuItem.Text = "Зарандомить таблицу";
+            зарандомитьТаблицуToolStripMenuItem.Click += button4_Click;
+            // 
+            // вычислитьДанныеToolStripMenuItem
+            // 
+            вычислитьДанныеToolStripMenuItem.Name = "вычислитьДанныеToolStripMenuItem";
+            вычислитьДанныеToolStripMenuItem.Size = new Size(124, 20);
+            вычислитьДанныеToolStripMenuItem.Text = "Вычислить данные";
+            вычислитьДанныеToolStripMenuItem.Click += button3_Click;
+            // 
+            // очиститьДанныеToolStripMenuItem
+            // 
+            очиститьДанныеToolStripMenuItem.Name = "очиститьДанныеToolStripMenuItem";
+            очиститьДанныеToolStripMenuItem.Size = new Size(115, 20);
+            очиститьДанныеToolStripMenuItem.Text = "Очистить данные";
+            очиститьДанныеToolStripMenuItem.Click += очиститьДанныеToolStripMenuItem_Click;
             // 
             // Form1
             // 
@@ -246,5 +278,9 @@ namespace kyrs
         private ToolStripMenuItem испортToolStripMenuItem;
         private ToolStripMenuItem экспортtxtToolStripMenuItem;
         private SaveFileDialog saveFileDialog1;
+        private ToolStripMenuItem создатьТаблицуToolStripMenuItem;
+        private ToolStripMenuItem зарандомитьТаблицуToolStripMenuItem;
+        private ToolStripMenuItem вычислитьДанныеToolStripMenuItem;
+        private ToolStripMenuItem очиститьДанныеToolStripMenuItem;
     }
 }

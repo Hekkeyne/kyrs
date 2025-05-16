@@ -11,7 +11,7 @@ namespace kyrs
         {
             InitializeComponent();
             label2.Text = "Ведите количество экспертов и количество товаров";
-            button1.Text = "Создать таблицу"; 
+            button1.Text = "Создать таблицу";
             button2.Text = "Ввести случайные данные";
             label3.Text = "Количество экспертов";
             label4.Text = "Количество инструментов";
@@ -19,6 +19,9 @@ namespace kyrs
             button4.Visible = false;
             label1.Text = "Ответ недоступен, для начала нажмите кнопку 'Создать таблицу'";
             dataGridView1.Visible = false;
+            зарандомитьТаблицуToolStripMenuItem.Visible = false;
+            вычислитьДанныеToolStripMenuItem.Visible = false;
+
         }
         private void button2_Click(object sender, EventArgs e)
         {
@@ -29,11 +32,15 @@ namespace kyrs
             textBox1.Text = x.ToString();
             x = rnd.Next(1, 101);
             textBox2.Text = x.ToString();
+            button1_Click(sender, e);
+            button4_Click(sender, e);
         }
-        private void button1_Click(object sender, EventArgs e) 
+        private void button1_Click(object sender, EventArgs e)
         {
             try
             {
+                зарандомитьТаблицуToolStripMenuItem.Visible = true;
+                вычислитьДанныеToolStripMenuItem.Visible = true;
                 textBox1.BackColor = Color.White;
                 textBox2.BackColor = Color.White;
                 dataGridView1.Visible = true;
@@ -49,7 +56,7 @@ namespace kyrs
                 dataGridView1.Columns.Add("", "/");
                 for (int i = 0; i < tovar; i++)
                 {
-                    dataGridView1.Columns.Add("", $"Товар {1 + i}"); 
+                    dataGridView1.Columns.Add("", $"Товар {1 + i}");
                 }
                 for (int i = 0; i < experts; i++)
                 {
@@ -85,9 +92,11 @@ namespace kyrs
                 dataGridView1.Rows.Clear();
                 dataGridView1.Columns.Clear();
                 dataGridView1.Visible = false;
+                зарандомитьТаблицуToolStripMenuItem.Visible = false;
+                вычислитьДанныеToolStripMenuItem.Visible = false;
             }
         }
-        private void button3_Click(object sender, EventArgs e) 
+        private void button3_Click(object sender, EventArgs e)
         {
             try
             {
@@ -105,16 +114,18 @@ namespace kyrs
                             {
                                 dataGridView1.Rows[j].Cells[i].Value = dataGridView1.Rows[j].Cells[i].Value + ">100";
                             }
-                            y += int.Parse(dataGridView1.Rows[j].Cells[i].Value.ToString());
-                            if (dataGridView1.Rows[j].Cells[i].Style.BackColor == Color.Red)
+                            else
                             {
-                                dataGridView1.Rows[j].Cells[i].Style.BackColor = Color.White;
+                                y += int.Parse(dataGridView1.Rows[j].Cells[i].Value.ToString());
+                                if (dataGridView1.Rows[j].Cells[i].Style.BackColor == Color.Red)
+                                {
+                                    dataGridView1.Rows[j].Cells[i].Style.BackColor = Color.White;
+                                }
                             }
                         }
                         catch
                         {
                             dataGridView1.Rows[j].Cells[i].Style.BackColor = Color.Red;
-                            j += 1;
                         }
                     }
                     ans1.Add(y);
@@ -143,7 +154,7 @@ namespace kyrs
 ";
                 double maxex = double.Parse(dataGridView1.Rows[0].Cells[maxi + 1].Value.ToString());
                 double maxexi = 1;
-                for (int j = 1; j < experts + 1; j++) 
+                for (int j = 1; j < experts + 1; j++)
                 {
                     if (maxex < double.Parse(dataGridView1.Rows[j - 1].Cells[maxi + 1].Value.ToString()))
                     {
@@ -207,6 +218,8 @@ namespace kyrs
         {
             try
             {
+                зарандомитьТаблицуToolStripMenuItem.Visible = true;
+                вычислитьДанныеToolStripMenuItem.Visible = true;
                 textBox1.BackColor = Color.White;
                 textBox2.BackColor = Color.White;
                 dataGridView1.Columns.Clear();
@@ -239,14 +252,14 @@ namespace kyrs
                         }
                         for (int i = 0; i < strok; i++)
                         {
-                            dataGridView1.Rows.Add($"Эксперт {i + 1}","");
+                            dataGridView1.Rows.Add($"Эксперт {i + 1}", "");
                             dataGridView1.Rows[i].Cells[0].ReadOnly = true;
                             for (int j = 0; j < (fff[i].Length); j++)
                             {
-                                dataGridView1.Rows[i].Cells[j+1].Value = fff[i][j];
-                                if (dataGridView1.Rows[i].Cells[j+1].Style.BackColor == Color.Red)
+                                dataGridView1.Rows[i].Cells[j + 1].Value = fff[i][j];
+                                if (dataGridView1.Rows[i].Cells[j + 1].Style.BackColor == Color.Red)
                                 {
-                                    dataGridView1.Rows[i].Cells[j+1].Style.BackColor = Color.White;
+                                    dataGridView1.Rows[i].Cells[j + 1].Style.BackColor = Color.White;
                                 }
                             }
                         }
@@ -285,7 +298,7 @@ namespace kyrs
                         {
                             for (int j = 1; j <= b; j++)
                             {
-                                g = g+(dataGridView1.Rows[i].Cells[j].Value)+" ";
+                                g = g + (dataGridView1.Rows[i].Cells[j].Value) + " ";
                             }
                             sw.WriteLine(g);
                             g = "";
@@ -294,10 +307,24 @@ namespace kyrs
                     }
                 }
             }
-            catch 
+            catch
             {
                 MessageBox.Show("Ошибка сохранения файла");
             }
+        }
+
+        private void очиститьДанныеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = "";
+            textBox2.Text = "";
+            label1.Text = "Ответ недоступен, для начала нажмите кнопку 'Создать таблицу'";
+            button3.Visible = false;
+            button4.Visible = false;
+            dataGridView1.Rows.Clear();
+            dataGridView1.Columns.Clear();
+            dataGridView1.Visible = false;
+            зарандомитьТаблицуToolStripMenuItem.Visible = false;
+            вычислитьДанныеToolStripMenuItem.Visible = false;
         }
     }
 }
