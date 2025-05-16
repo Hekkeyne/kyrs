@@ -102,6 +102,13 @@ namespace kyrs
                     {
                         try
                         {
+                            if (int.Parse(dataGridView1.Rows[j].Cells[i].Value.ToString()) > 100)
+                            {
+                                //dataGridView1.Rows[j].Cells[i].Style.BackColor = Color.Red;
+                                //j += 1;
+                                dataGridView1.Rows[j].Cells[i].Value = dataGridView1.Rows[j].Cells[i].Value + ">100";
+
+                            }
                             y += int.Parse(dataGridView1.Rows[j].Cells[i].Value.ToString());
                             if (dataGridView1.Rows[j].Cells[i].Style.BackColor == Color.Red)
                             {
