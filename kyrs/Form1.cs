@@ -19,7 +19,6 @@ namespace kyrs
             button4.Visible = false;
             label1.Text = "Ответ недоступен, для начала нажмите кнопку 'Создать таблицу'";
             dataGridView1.Visible = false;
-
         }
         private void button2_Click(object sender, EventArgs e)
         {
@@ -31,7 +30,6 @@ namespace kyrs
             x = rnd.Next(1, 101);
             textBox2.Text = x.ToString();
         }
-
         private void button1_Click(object sender, EventArgs e) 
         {
             try
@@ -56,6 +54,7 @@ namespace kyrs
                 for (int i = 0; i < experts; i++)
                 {
                     dataGridView1.Rows.Add($"Эксперт {i + 1}", "");
+                    dataGridView1.Rows[i].Cells[0].ReadOnly = true;
                     for (int j = 1; j < tovar + 1; j++)
                     {
                         dataGridView1.Rows[i].Cells[j].Value = "";
@@ -105,7 +104,6 @@ namespace kyrs
                             if (int.Parse(dataGridView1.Rows[j].Cells[i].Value.ToString()) > 100)
                             {
                                 dataGridView1.Rows[j].Cells[i].Value = dataGridView1.Rows[j].Cells[i].Value + ">100";
-
                             }
                             y += int.Parse(dataGridView1.Rows[j].Cells[i].Value.ToString());
                             if (dataGridView1.Rows[j].Cells[i].Style.BackColor == Color.Red)
@@ -117,7 +115,6 @@ namespace kyrs
                         {
                             dataGridView1.Rows[j].Cells[i].Style.BackColor = Color.Red;
                             j += 1;
-
                         }
                     }
                     ans1.Add(y);
@@ -207,7 +204,6 @@ namespace kyrs
             }
         }
         private void импортToolStripMenuItem_Click(object sender, EventArgs e)
-
         {
             try
             {
@@ -244,6 +240,7 @@ namespace kyrs
                         for (int i = 0; i < strok; i++)
                         {
                             dataGridView1.Rows.Add($"Эксперт {i + 1}","");
+                            dataGridView1.Rows[i].Cells[0].ReadOnly = true;
                             for (int j = 0; j < (fff[i].Length); j++)
                             {
                                 dataGridView1.Rows[i].Cells[j+1].Value = fff[i][j];
