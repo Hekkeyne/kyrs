@@ -56,10 +56,9 @@ namespace kyrs
                 for (int i = 0; i < experts; i++)
                 {
                     dataGridView1.Rows.Add($"Эксперт {i + 1}", "");
-                    Random f = new Random();
                     for (int j = 1; j < tovar + 1; j++)
                     {
-                        dataGridView1.Rows[i].Cells[j].Value = f.Next(0, 101);
+                        dataGridView1.Rows[i].Cells[j].Value = "";
                         if (dataGridView1.Rows[i].Cells[j].Style.BackColor == Color.Red)
                         {
                             dataGridView1.Rows[i].Cells[j].Style.BackColor = Color.White;
@@ -82,13 +81,11 @@ namespace kyrs
                 {
                     textBox2.BackColor = Color.Red;
                 }
-
                 button3.Visible = false;
                 button4.Visible = false;
                 dataGridView1.Rows.Clear();
                 dataGridView1.Columns.Clear();
                 dataGridView1.Visible = false;
-
             }
         }
         private void button3_Click(object sender, EventArgs e) 
@@ -203,9 +200,7 @@ namespace kyrs
                     }
                 }
             }
-
         }
-
         private void импортToolStripMenuItem_Click(object sender, EventArgs e)
 
         {
@@ -219,7 +214,6 @@ namespace kyrs
                 if (openFileDialog1.ShowDialog() == DialogResult.OK)
                 {
                     using (StreamReader h = new StreamReader(openFileDialog1.FileName))
-
                     {
                         List<string[]> fff = new List<string[]>();
                         int stolb = 0;
@@ -297,11 +291,10 @@ namespace kyrs
                         MessageBox.Show($"Файл сохранён в {fn}");
                     }
                 }
-                
             }
             catch 
             {
-                
+                MessageBox.Show("Ошибка сохранения файла");
             }
         }
     }

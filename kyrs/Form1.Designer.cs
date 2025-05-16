@@ -224,6 +224,11 @@ namespace kyrs
             PerformLayout();
         }
 
+        private void Button5_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
         private Button button1;
         private TextBox textBox1;
         private TextBox textBox2;
