@@ -47,8 +47,8 @@ namespace kyrs
             создатьТаблицуToolStripMenuItem = new ToolStripMenuItem();
             зарандомитьТаблицуToolStripMenuItem = new ToolStripMenuItem();
             вычислитьДанныеToolStripMenuItem = new ToolStripMenuItem();
-            saveFileDialog1 = new SaveFileDialog();
             очиститьДанныеToolStripMenuItem = new ToolStripMenuItem();
+            saveFileDialog1 = new SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             menuStrip1.SuspendLayout();
             SuspendLayout();
@@ -91,7 +91,7 @@ namespace kyrs
             // button2
             // 
             button2.AutoSize = true;
-            button2.Location = new Point(431, 68);
+            button2.Location = new Point(431, 69);
             button2.Name = "button2";
             button2.Size = new Size(75, 25);
             button2.TabIndex = 5;
@@ -130,7 +130,7 @@ namespace kyrs
             // button3
             // 
             button3.AutoSize = true;
-            button3.Location = new Point(629, 68);
+            button3.Location = new Point(598, 69);
             button3.Name = "button3";
             button3.Size = new Size(75, 25);
             button3.TabIndex = 9;
@@ -152,7 +152,7 @@ namespace kyrs
             // button4
             // 
             button4.AutoSize = true;
-            button4.Location = new Point(774, 68);
+            button4.Location = new Point(431, 44);
             button4.Name = "button4";
             button4.Size = new Size(75, 25);
             button4.TabIndex = 12;
