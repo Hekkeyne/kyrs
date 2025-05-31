@@ -1,4 +1,5 @@
-﻿using System.Linq.Expressions;
+﻿using System.Data;
+using System.Linq.Expressions;
 using System.Windows.Forms;
 using System.Windows.Forms.Design;
 using static System.Net.Mime.MediaTypeNames;
@@ -10,18 +11,32 @@ namespace kyrs
         public Form1()
         {
             InitializeComponent();
-            label2.Text = "Ведите количество экспертов и количество товаров";
-            button1.Text = "Создать таблицу";
-            button2.Text = "Ввести случайные данные";
-            label3.Text = "Количество экспертов";
-            label4.Text = "Количество инструментов";
+            Resize += (s, e) => UpdateControlsPosition();
+            dataGridView1.SizeChanged += (s, e) => UpdateLabelPosition();
+            MinimumSize = new Size(button3.Right + 20, button3.Bottom + 20);
             button3.Visible = false;
             button4.Visible = false;
-            label1.Text = "Ответ недоступен, для начала нажмите кнопку 'Создать таблицу'";
-            dataGridView1.Visible = false;
             зарандомитьТаблицуToolStripMenuItem.Visible = false;
             вычислитьДанныеToolStripMenuItem.Visible = false;
-
+        }
+        private void UpdateControlsPosition()
+        {
+            dataGridView1.Size = new Size(
+                ClientSize.Width - dataGridView1.Left - 20-textBox3.Width,
+                ClientSize.Height - dataGridView1.Top - 20
+            );
+            UpdateLabelPosition();
+        }
+        private void UpdateLabelPosition()
+        {
+            textBox3.Location = new Point(
+                dataGridView1.Right + 10,  
+                dataGridView1.Top
+            );
+            textBox3.Size = new Size(
+                (ClientSize.Width-dataGridView1.Left-20)/3,
+                ClientSize.Height-dataGridView1.Top-20
+                );
         }
         private void button2_Click(object sender, EventArgs e)
         {
@@ -44,19 +59,20 @@ namespace kyrs
                 textBox1.BackColor = Color.White;
                 textBox2.BackColor = Color.White;
                 dataGridView1.Visible = true;
-                button3.Text = "Вычислить данные";
                 button3.Visible = true;
-                label1.Text = "Ответ недоступен, нажмите кнопку 'Вычислить данные'";
+                textBox3.Text = "Ответ недоступен, нажмите кнопку 'Вычислить данные'";
                 button4.Visible = true;
-                button4.Text = "Зарандомить таблицу";
                 int experts = int.Parse(textBox1.Text);
                 int tovar = int.Parse(textBox2.Text);
                 dataGridView1.Columns.Clear();
                 dataGridView1.Rows.Clear();
-                dataGridView1.Columns.Add("", "/");
+                dataGridView1.Columns.Add("Column0", "/");
                 for (int i = 0; i < tovar; i++)
                 {
-                    dataGridView1.Columns.Add("", $"Товар {1 + i}");
+                    DataGridViewTextBoxColumn column = new DataGridViewTextBoxColumn();
+                    column.HeaderText = "Товар " + (i + 1); 
+                    column.ValueType = typeof(decimal);
+                    dataGridView1.Columns.Add(column);
                 }
                 for (int i = 0; i < experts; i++)
                 {
@@ -91,7 +107,7 @@ namespace kyrs
                 button4.Visible = false;
                 dataGridView1.Rows.Clear();
                 dataGridView1.Columns.Clear();
-                dataGridView1.Visible = false;
+     
                 зарандомитьТаблицуToolStripMenuItem.Visible = false;
                 вычислитьДанныеToolStripMenuItem.Visible = false;
             }
@@ -113,7 +129,7 @@ namespace kyrs
                             if (int.Parse(dataGridView1.Rows[j].Cells[i].Value.ToString()) > 100)
                             {
                                 dataGridView1.Rows[j].Cells[i].Value = dataGridView1.Rows[j].Cells[i].Value + ">100";
-                                dataGridView1.Rows[j].Cells[i].Style.BackColor= Color.Red;
+                                dataGridView1.Rows[j].Cells[i].Style.BackColor = Color.Red;
                             }
                             else
                             {
@@ -149,7 +165,7 @@ namespace kyrs
                         maxi = i;
                     }
                 }
-                label1.Text = @$"1)
+                textBox3.Text = @$"1)
 Наихудший товар {mini + 1} с суммарной оценкой {min} 
 Наилучший товар {maxi + 1} с суммарной оценкой {max} 
 ";
@@ -163,7 +179,7 @@ namespace kyrs
                         maxexi = j;
                     }
                 }
-                label1.Text += @$"2)
+                textBox3.Text += @$"2)
 Наивысший балл {maxex} поставил эксперт {maxexi} товару {maxi + 1}
 3)
 ";
@@ -190,7 +206,7 @@ namespace kyrs
                 }
                 for (int i = 0; i < ans1.Count; i++)
                 {
-                    label1.Text += $@"Товар {anss[i]}, Общая оценка {ans1[i]}
+                    textBox3.Text += $@"Товар {anss[i]}, Общая оценка {ans1[i]}
 ";
                 }
             }
@@ -269,7 +285,7 @@ namespace kyrs
                         dataGridView1.Visible = true;
                         button3.Text = "Вычислить данные";
                         button3.Visible = true;
-                        label1.Text = "Ответ недоступен, нажмите кнопку 'Вычислить данные'";
+                        textBox3.Text = "Ответ недоступен, нажмите кнопку 'Вычислить данные'";
                         button4.Visible = true;
                         button4.Text = "Зарандомить таблицу";
                     }
@@ -318,14 +334,14 @@ namespace kyrs
         {
             textBox1.Text = "";
             textBox2.Text = "";
-            label1.Text = "Ответ недоступен, для начала нажмите кнопку 'Создать таблицу'";
+            textBox3.Text = "Ответ недоступен, для начала нажмите кнопку 'Создать таблицу'";
             button3.Visible = false;
             button4.Visible = false;
             dataGridView1.Rows.Clear();
             dataGridView1.Columns.Clear();
-            dataGridView1.Visible = false;
             зарандомитьТаблицуToolStripMenuItem.Visible = false;
             вычислитьДанныеToolStripMenuItem.Visible = false;
         }
+
     }
 }

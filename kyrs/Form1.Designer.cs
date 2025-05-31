@@ -37,7 +37,7 @@ namespace kyrs
             label4 = new Label();
             dataGridView1 = new DataGridView();
             button3 = new Button();
-            label1 = new Label();
+            textBox3 = new TextBox();
             button4 = new Button();
             openFileDialog1 = new OpenFileDialog();
             menuStrip1 = new MenuStrip();
@@ -58,9 +58,9 @@ namespace kyrs
             button1.AutoSize = true;
             button1.Location = new Point(312, 68);
             button1.Name = "button1";
-            button1.Size = new Size(75, 25);
+            button1.Size = new Size(108, 25);
             button1.TabIndex = 0;
-            button1.Text = "button1";
+            button1.Text = "Создать таблицу";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
@@ -84,18 +84,18 @@ namespace kyrs
             label2.BorderStyle = BorderStyle.FixedSingle;
             label2.Location = new Point(22, 25);
             label2.Name = "label2";
-            label2.Size = new Size(40, 17);
+            label2.Size = new Size(296, 17);
             label2.TabIndex = 4;
-            label2.Text = "label2";
+            label2.Text = "Ведите количество экспертов и количество товаров";
             // 
             // button2
             // 
             button2.AutoSize = true;
-            button2.Location = new Point(431, 69);
+            button2.Location = new Point(426, 68);
             button2.Name = "button2";
-            button2.Size = new Size(75, 25);
+            button2.Size = new Size(162, 25);
             button2.TabIndex = 5;
-            button2.Text = "button2";
+            button2.Text = "Ввести случайные данные";
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 
@@ -105,9 +105,9 @@ namespace kyrs
             label3.BorderStyle = BorderStyle.FixedSingle;
             label3.Location = new Point(22, 48);
             label3.Name = "label3";
-            label3.Size = new Size(40, 17);
+            label3.Size = new Size(133, 17);
             label3.TabIndex = 6;
-            label3.Text = "label3";
+            label3.Text = "Количество экспертов";
             // 
             // label4
             // 
@@ -115,48 +115,51 @@ namespace kyrs
             label4.BorderStyle = BorderStyle.FixedSingle;
             label4.Location = new Point(22, 74);
             label4.Name = "label4";
-            label4.Size = new Size(40, 17);
+            label4.Size = new Size(155, 17);
             label4.TabIndex = 7;
-            label4.Text = "label4";
+            label4.Text = "Количество инструментов";
             // 
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(218, 97);
+            dataGridView1.Location = new Point(22, 101);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(1136, 701);
+            dataGridView1.Size = new Size(843, 701);
             dataGridView1.TabIndex = 8;
             // 
             // button3
             // 
             button3.AutoSize = true;
-            button3.Location = new Point(598, 69);
+            button3.Location = new Point(594, 68);
             button3.Name = "button3";
-            button3.Size = new Size(75, 25);
+            button3.Size = new Size(122, 25);
             button3.TabIndex = 9;
-            button3.Text = "button3";
+            button3.Text = "Вычислить данные";
             button3.UseVisualStyleBackColor = true;
             button3.Click += button3_Click;
             // 
-            // label1
+            // textBox3
             // 
-            label1.AutoSize = true;
-            label1.BorderStyle = BorderStyle.FixedSingle;
-            label1.Location = new Point(1360, 97);
-            label1.MaximumSize = new Size(788, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(40, 17);
-            label1.TabIndex = 10;
-            label1.Text = "label1";
+            textBox3.AutoSize = true;
+            textBox3.BorderStyle = BorderStyle.FixedSingle;
+            textBox3.Location = new Point(1067, 97);
+            textBox3.MaximumSize = new Size(788, 0);
+            textBox3.Name = "textBox3";
+            textBox3.Size = new Size(367, 17);
+            textBox3.TabIndex = 10;
+            textBox3.Text = "Ответ недоступен, для начала нажмите кнопку 'Создать таблицу'";
+            textBox3.ReadOnly = true;
+            textBox3.Multiline = true;
+            textBox3.ScrollBars = ScrollBars.Both;
             // 
             // button4
             // 
             button4.AutoSize = true;
-            button4.Location = new Point(431, 44);
+            button4.Location = new Point(426, 40);
             button4.Name = "button4";
-            button4.Size = new Size(75, 25);
+            button4.Size = new Size(245, 25);
             button4.TabIndex = 12;
-            button4.Text = "button4";
+            button4.Text = "Ввести случайные значения для таблицы";
             button4.UseVisualStyleBackColor = true;
             button4.Click += button4_Click;
             // 
@@ -231,10 +234,9 @@ namespace kyrs
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
-            AutoSize = true;
             ClientSize = new Size(1848, 814);
             Controls.Add(button4);
-            Controls.Add(label1);
+            Controls.Add(textBox3);
             Controls.Add(button3);
             Controls.Add(dataGridView1);
             Controls.Add(label4);
@@ -270,7 +272,7 @@ namespace kyrs
         private Label label4;
         private DataGridView dataGridView1;
         private Button button3;
-        private Label label1;
+        private TextBox textBox3;
         private Button button4;
         private OpenFileDialog openFileDialog1;
         private MenuStrip menuStrip1;
