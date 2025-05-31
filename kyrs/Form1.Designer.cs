@@ -70,6 +70,7 @@ namespace kyrs
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(90, 23);
             textBox1.TabIndex = 1;
+            textBox1.KeyPress += textBox_KeyPress;
             // 
             // textBox2
             // 
@@ -77,6 +78,7 @@ namespace kyrs
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(90, 23);
             textBox2.TabIndex = 3;
+            textBox2.KeyPress += textBox_KeyPress;
             // 
             // label2
             // 
@@ -126,6 +128,7 @@ namespace kyrs
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(843, 701);
             dataGridView1.TabIndex = 8;
+            
             // 
             // button3
             // 
@@ -140,17 +143,16 @@ namespace kyrs
             // 
             // textBox3
             // 
-            textBox3.AutoSize = true;
             textBox3.BorderStyle = BorderStyle.FixedSingle;
             textBox3.Location = new Point(1067, 97);
             textBox3.MaximumSize = new Size(788, 0);
+            textBox3.Multiline = true;
             textBox3.Name = "textBox3";
+            textBox3.ReadOnly = true;
+            textBox3.ScrollBars = ScrollBars.Both;
             textBox3.Size = new Size(367, 17);
             textBox3.TabIndex = 10;
             textBox3.Text = "Ответ недоступен, для начала нажмите кнопку 'Создать таблицу'";
-            textBox3.ReadOnly = true;
-            textBox3.Multiline = true;
-            textBox3.ScrollBars = ScrollBars.Both;
             // 
             // button4
             // 

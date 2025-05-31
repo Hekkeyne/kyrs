@@ -22,7 +22,7 @@ namespace kyrs
         private void UpdateControlsPosition()
         {
             dataGridView1.Size = new Size(
-                ClientSize.Width - dataGridView1.Left - 20-textBox3.Width,
+                ClientSize.Width - dataGridView1.Left - 20 - textBox3.Width,
                 ClientSize.Height - dataGridView1.Top - 20
             );
             UpdateLabelPosition();
@@ -30,18 +30,26 @@ namespace kyrs
         private void UpdateLabelPosition()
         {
             textBox3.Location = new Point(
-                dataGridView1.Right + 10,  
+                dataGridView1.Right + 10,
                 dataGridView1.Top
             );
             textBox3.Size = new Size(
-                (ClientSize.Width-dataGridView1.Left-20)/3,
-                ClientSize.Height-dataGridView1.Top-20
+                (ClientSize.Width - dataGridView1.Left - 20) / 3,
+                ClientSize.Height - dataGridView1.Top - 20
                 );
+        }
+        private void textBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
         private void button2_Click(object sender, EventArgs e)
         {
             textBox1.BackColor = Color.White;
             textBox2.BackColor = Color.White;
+
             Random rnd = new Random();
             int x = rnd.Next(1, 101);
             textBox1.Text = x.ToString();
@@ -70,8 +78,9 @@ namespace kyrs
                 for (int i = 0; i < tovar; i++)
                 {
                     DataGridViewTextBoxColumn column = new DataGridViewTextBoxColumn();
-                    column.HeaderText = "Товар " + (i + 1); 
-                    column.ValueType = typeof(decimal);
+                    column.HeaderText = "Товар " + (i + 1);
+                    column.DefaultCellStyle.Format = "N0";
+                    column.ValueType = typeof(int);
                     dataGridView1.Columns.Add(column);
                 }
                 for (int i = 0; i < experts; i++)
@@ -107,7 +116,7 @@ namespace kyrs
                 button4.Visible = false;
                 dataGridView1.Rows.Clear();
                 dataGridView1.Columns.Clear();
-     
+
                 зарандомитьТаблицуToolStripMenuItem.Visible = false;
                 вычислитьДанныеToolStripMenuItem.Visible = false;
             }
@@ -342,6 +351,7 @@ namespace kyrs
             зарандомитьТаблицуToolStripMenuItem.Visible = false;
             вычислитьДанныеToolStripMenuItem.Visible = false;
         }
+
 
     }
 }
