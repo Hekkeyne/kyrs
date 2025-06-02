@@ -18,6 +18,7 @@ namespace kyrs
             button4.Visible = false;
             зарандомитьТаблицуToolStripMenuItem.Visible = false;
             вычислитьДанныеToolStripMenuItem.Visible = false;
+            button1.Enabled = false;
         }
         private void UpdateControlsPosition()
         {
@@ -43,6 +44,17 @@ namespace kyrs
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
+            }
+        }
+        private void key_up(object sender, KeyEventArgs e)
+        {
+            if (int.TryParse(textBox1.Text, out _) && int.TryParse(textBox2.Text, out _))
+            {
+                button1.Enabled = true;
+            }
+            else
+            {
+                button1.Enabled = false;
             }
         }
         private void proverka(object sender, DataGridViewEditingControlShowingEventArgs e)
@@ -333,11 +345,10 @@ namespace kyrs
                 MessageBox.Show("Ошибка сохранения файла");
             }
         }
-
         private void очиститьДанныеToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            textBox1.Text = "";
-            textBox2.Text = "";
+            textBox1.Text = null;
+            textBox2.Text = null;
             textBox3.Text = "Ответ недоступен, для начала нажмите кнопку 'Создать таблицу'";
             button3.Visible = false;
             button4.Visible = false;

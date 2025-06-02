@@ -71,6 +71,7 @@ namespace kyrs
             textBox1.Size = new Size(90, 23);
             textBox1.TabIndex = 1;
             textBox1.KeyPress += textBox_KeyPress;
+            textBox1.KeyUp += key_up;
             // 
             // textBox2
             // 
@@ -79,6 +80,7 @@ namespace kyrs
             textBox2.Size = new Size(90, 23);
             textBox2.TabIndex = 3;
             textBox2.KeyPress += textBox_KeyPress;
+            textBox2.KeyUp += key_up;
             // 
             // label2
             // 
