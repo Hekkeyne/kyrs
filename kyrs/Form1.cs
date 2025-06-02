@@ -45,11 +45,17 @@ namespace kyrs
                 e.Handled = true;
             }
         }
+        private void proverka(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            if (e.Control is TextBox tb)
+            {
+                tb.KeyPress += textBox_KeyPress;
+            } 
+        }
         private void button2_Click(object sender, EventArgs e)
         {
             textBox1.BackColor = Color.White;
             textBox2.BackColor = Color.White;
-
             Random rnd = new Random();
             int x = rnd.Next(1, 101);
             textBox1.Text = x.ToString();
@@ -74,19 +80,16 @@ namespace kyrs
                 int tovar = int.Parse(textBox2.Text);
                 dataGridView1.Columns.Clear();
                 dataGridView1.Rows.Clear();
-                dataGridView1.Columns.Add("Column0", "/");
+                dataGridView1.Columns.Add("", "/");
+                dataGridView1.Columns[0].ReadOnly = true;
                 for (int i = 0; i < tovar; i++)
                 {
                     DataGridViewTextBoxColumn column = new DataGridViewTextBoxColumn();
-                    column.HeaderText = "Товар " + (i + 1);
-                    column.DefaultCellStyle.Format = "N0";
-                    column.ValueType = typeof(int);
-                    dataGridView1.Columns.Add(column);
+                    dataGridView1.Columns.Add("",$"Товар {i + 1}");
                 }
                 for (int i = 0; i < experts; i++)
                 {
                     dataGridView1.Rows.Add($"Эксперт {i + 1}", "");
-                    dataGridView1.Rows[i].Cells[0].ReadOnly = true;
                     for (int j = 1; j < tovar + 1; j++)
                     {
                         dataGridView1.Rows[i].Cells[j].Value = "";
@@ -116,7 +119,6 @@ namespace kyrs
                 button4.Visible = false;
                 dataGridView1.Rows.Clear();
                 dataGridView1.Columns.Clear();
-
                 зарандомитьТаблицуToolStripMenuItem.Visible = false;
                 вычислитьДанныеToolStripMenuItem.Visible = false;
             }
@@ -174,10 +176,7 @@ namespace kyrs
                         maxi = i;
                     }
                 }
-                textBox3.Text = @$"1)
-Наихудший товар {mini + 1} с суммарной оценкой {min} 
-Наилучший товар {maxi + 1} с суммарной оценкой {max} 
-";
+                textBox3.Text = @$"1) Наихудший товар {mini + 1} с суммарной оценкой {min}, Наилучший товар {maxi + 1} с суммарной оценкой {max}"+ Environment.NewLine;
                 double maxex = double.Parse(dataGridView1.Rows[0].Cells[maxi + 1].Value.ToString());
                 double maxexi = 1;
                 for (int j = 1; j < experts + 1; j++)
@@ -188,10 +187,7 @@ namespace kyrs
                         maxexi = j;
                     }
                 }
-                textBox3.Text += @$"2)
-Наивысший балл {maxex} поставил эксперт {maxexi} товару {maxi + 1}
-3)
-";
+                textBox3.Text += @$"2) Наивысший балл {maxex} поставил эксперт {maxexi} товару {maxi + 1} "+ Environment.NewLine+"3) ";
                 double x = 0;
                 double[] anss = new double[ans1.Count];
                 for (int i = 0; i < ans1.Count; i++)
@@ -215,8 +211,7 @@ namespace kyrs
                 }
                 for (int i = 0; i < ans1.Count; i++)
                 {
-                    textBox3.Text += $@"Товар {anss[i]}, Общая оценка {ans1[i]}
-";
+                    textBox3.Text += $@"Товар {anss[i]}, Общая оценка {ans1[i]}"+ Environment.NewLine;
                 }
             }
             catch
@@ -351,7 +346,5 @@ namespace kyrs
             зарандомитьТаблицуToolStripMenuItem.Visible = false;
             вычислитьДанныеToolStripMenuItem.Visible = false;
         }
-
-
     }
 }

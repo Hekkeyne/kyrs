@@ -128,7 +128,7 @@ namespace kyrs
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(843, 701);
             dataGridView1.TabIndex = 8;
-            
+            dataGridView1.EditingControlShowing += proverka;
             // 
             // button3
             // 
