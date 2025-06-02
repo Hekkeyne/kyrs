@@ -14,10 +14,11 @@ namespace kyrs
             Resize += (s, e) => UpdateControlsPosition();
             dataGridView1.SizeChanged += (s, e) => UpdateLabelPosition();
             MinimumSize = new Size(button3.Right + 20, button3.Bottom + 20);
-            button3.Visible = false;
-            button4.Visible = false;
-            зарандомитьТаблицуToolStripMenuItem.Visible = false;
-            вычислитьДанныеToolStripMenuItem.Visible = false;
+            button3.Enabled = false;
+            button4.Enabled = false;
+            зарандомитьТаблицуToolStripMenuItem.Enabled = false;
+            вычислитьДанныеToolStripMenuItem.Enabled = false;
+            создатьТаблицуToolStripMenuItem.Enabled = false;
             button1.Enabled = false;
         }
         private void UpdateControlsPosition()
@@ -51,10 +52,12 @@ namespace kyrs
             if (int.TryParse(textBox1.Text, out _) && int.TryParse(textBox2.Text, out _))
             {
                 button1.Enabled = true;
+                создатьТаблицуToolStripMenuItem.Enabled = true;
             }
             else
             {
                 button1.Enabled = false;
+                создатьТаблицуToolStripMenuItem.Enabled = false;
             }
         }
         private void proverka(object sender, DataGridViewEditingControlShowingEventArgs e)
@@ -68,6 +71,7 @@ namespace kyrs
         {
             textBox1.BackColor = Color.White;
             textBox2.BackColor = Color.White;
+            button1.Enabled=true;
             Random rnd = new Random();
             int x = rnd.Next(1, 101);
             textBox1.Text = x.ToString();
@@ -80,14 +84,14 @@ namespace kyrs
         {
             try
             {
-                зарандомитьТаблицуToolStripMenuItem.Visible = true;
-                вычислитьДанныеToolStripMenuItem.Visible = true;
+                зарандомитьТаблицуToolStripMenuItem.Enabled = true;
+                вычислитьДанныеToolStripMenuItem.Enabled = true;
                 textBox1.BackColor = Color.White;
                 textBox2.BackColor = Color.White;
-                dataGridView1.Visible = true;
-                button3.Visible = true;
+                dataGridView1.Enabled = true;
+                button3.Enabled = true;
                 textBox3.Text = "Ответ недоступен, нажмите кнопку 'Вычислить данные'";
-                button4.Visible = true;
+                button4.Enabled = true;
                 int experts = int.Parse(textBox1.Text);
                 int tovar = int.Parse(textBox2.Text);
                 dataGridView1.Columns.Clear();
@@ -127,12 +131,12 @@ namespace kyrs
                 {
                     textBox2.BackColor = Color.Red;
                 }
-                button3.Visible = false;
-                button4.Visible = false;
+                button3.Enabled = false;
+                button4.Enabled = false;
                 dataGridView1.Rows.Clear();
                 dataGridView1.Columns.Clear();
-                зарандомитьТаблицуToolStripMenuItem.Visible = false;
-                вычислитьДанныеToolStripMenuItem.Visible = false;
+                зарандомитьТаблицуToolStripMenuItem.Enabled = false;
+                вычислитьДанныеToolStripMenuItem.Enabled = false;
             }
         }
         private void button3_Click(object sender, EventArgs e)
@@ -251,13 +255,13 @@ namespace kyrs
         {
             try
             {
-                зарандомитьТаблицуToolStripMenuItem.Visible = true;
-                вычислитьДанныеToolStripMenuItem.Visible = true;
+                зарандомитьТаблицуToolStripMenuItem.Enabled = true;
+                вычислитьДанныеToolStripMenuItem.Enabled = true;
                 textBox1.BackColor = Color.White;
                 textBox2.BackColor = Color.White;
                 dataGridView1.Columns.Clear();
                 dataGridView1.Rows.Clear();
-                dataGridView1.Visible = true;
+                dataGridView1.Enabled = true;
                 if (openFileDialog1.ShowDialog() == DialogResult.OK)
                 {
                     using (StreamReader h = new StreamReader(openFileDialog1.FileName))
@@ -298,11 +302,11 @@ namespace kyrs
                         }
                         textBox2.Text = stolb.ToString();
                         textBox1.Text = strok.ToString();
-                        dataGridView1.Visible = true;
+                        dataGridView1.Enabled = true;
                         button3.Text = "Вычислить данные";
-                        button3.Visible = true;
+                        button3.Enabled = true;
                         textBox3.Text = "Ответ недоступен, нажмите кнопку 'Вычислить данные'";
-                        button4.Visible = true;
+                        button4.Enabled = true;
                         button4.Text = "Зарандомить таблицу";
                     }
                 }
@@ -350,12 +354,14 @@ namespace kyrs
             textBox1.Text = null;
             textBox2.Text = null;
             textBox3.Text = "Ответ недоступен, для начала нажмите кнопку 'Создать таблицу'";
-            button3.Visible = false;
-            button4.Visible = false;
+            button1.Enabled = false;
+            button3.Enabled = false;
+            button4.Enabled = false;
             dataGridView1.Rows.Clear();
             dataGridView1.Columns.Clear();
-            зарандомитьТаблицуToolStripMenuItem.Visible = false;
-            вычислитьДанныеToolStripMenuItem.Visible = false;
+            зарандомитьТаблицуToolStripMenuItem.Enabled = false;
+            вычислитьДанныеToolStripMenuItem.Enabled = false;
+            создатьТаблицуToolStripMenuItem.Enabled=false;
         }
     }
 }
