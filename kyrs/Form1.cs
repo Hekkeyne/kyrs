@@ -72,6 +72,7 @@ namespace kyrs
             textBox1.BackColor = Color.White;
             textBox2.BackColor = Color.White;
             button1.Enabled=true;
+            создатьТаблицуToolStripMenuItem.Enabled = true;
             Random rnd = new Random();
             int x = rnd.Next(1, 101);
             textBox1.Text = x.ToString();
@@ -108,7 +109,7 @@ namespace kyrs
                     dataGridView1.Rows.Add($"Эксперт {i + 1}", "");
                     for (int j = 1; j < tovar + 1; j++)
                     {
-                        dataGridView1.Rows[i].Cells[j].Value = "";
+                        dataGridView1.Rows[i].Cells[j].Value = null;
                         if (dataGridView1.Rows[i].Cells[j].Style.BackColor == Color.Red)
                         {
                             dataGridView1.Rows[i].Cells[j].Style.BackColor = Color.White;
@@ -170,6 +171,8 @@ namespace kyrs
                         catch
                         {
                             dataGridView1.Rows[j].Cells[i].Style.BackColor = Color.Red;
+                            j=experts;
+                            i=tovar+1;
                         }
                     }
                     ans1.Add(y);
@@ -303,11 +306,11 @@ namespace kyrs
                         textBox2.Text = stolb.ToString();
                         textBox1.Text = strok.ToString();
                         dataGridView1.Enabled = true;
-                        button3.Text = "Вычислить данные";
                         button3.Enabled = true;
                         textBox3.Text = "Ответ недоступен, нажмите кнопку 'Вычислить данные'";
                         button4.Enabled = true;
-                        button4.Text = "Зарандомить таблицу";
+                        button1.Enabled = true;
+                        создатьТаблицуToolStripMenuItem.Enabled = true;
                     }
                 }
             }
